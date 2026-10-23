@@ -1,73 +1,44 @@
-# React + TypeScript + Vite
+# Math Equations
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A small interactive math app for exploring an equation with a visual balance scale. The current screen shows one fixed puzzle:
 
-Currently, two official plugins are available:
+**2 boxes + 3 counters = 13 counters**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The scale shows two `x`-marked boxes and three counters balancing thirteen counters. At present, the app asks you to identify the displayed quantities; it does not ask you to solve for the value of `x`.
 
-## React Compiler
+## Run the app
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+You need Node.js and npm installed.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```sh
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Open the local URL printed by Vite in your browser. To make a production build, run:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```sh
+npm run build
 ```
+
+## Use the puzzle
+
+Enter a value in each of the three number fields:
+
+- **boxes** — the number of `x`-marked boxes
+- **count** — the value of the counters added to the boxes
+- **sum** — the total on the other side of the scale
+
+The app checks each field as you type. A green border means the value matches the current puzzle; a red border means it does not; an empty field has a blue border. There is no submit button.
+
+For the displayed puzzle, the correct entries are:
+
+| Field | Value |
+| --- | ---: |
+| boxes | 2 |
+| count | 3 |
+| sum | 13 |
+
+## Current scope
+
+The scale and equation are currently fixed to the first puzzle. Although additional puzzles are defined in the source, the app does not yet provide a way to select or advance to them. Answers are checked independently per field; the app does not currently explain the solution or show a completion state.
