@@ -9,8 +9,10 @@ function App() {
     <>
       <InputProvider>
         <ArrayProvider>
-          <Scale />
-          <ProblemForm />
+          <main>
+            <Scale />
+            <ProblemForm />
+          </main>
         </ArrayProvider>
       </InputProvider>
     </>

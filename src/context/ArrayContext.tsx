@@ -27,7 +27,7 @@ type ArrayContextValue = {
     action: string,
     array: JSX.Element[][],
     incoming: JSX.Element,
-    num: number,
+    num?: number,
   ) => void;
 };
 
@@ -40,21 +40,20 @@ export const ArrayProvider = ({ children }: Props) => {
   const addToArray = (
     action: string,
     array: JSX.Element[][],
-
     incoming: JSX.Element,
-    num: number,
+    num?: number,
   ) => {
     switch (action) {
       case "addToRow": {
-        const existingRow = array[num];
+        const existingRow = array[num ? num : 0];
         existingRow.push(incoming);
-        array.splice(num, 1, existingRow);
+        array.splice(num ? num : 0, 1, existingRow);
         break;
       }
       case "newRow": {
         array.push([incoming]);
-        console.log("inne i newRow " + incoming);
-        console.log(array[0][0]);
+        // console.log("inne i newRow " + incoming);
+        // console.log(array[0][0]);
         break;
       }
     }

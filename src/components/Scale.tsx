@@ -1,50 +1,47 @@
-// import type {
-//   JSXElementConstructor,
-//   ReactElement,
-//   ReactNode,
-//   ReactPortal,
-// } from "react";
-// import { problem1 } from "../utils/mathProblems";
-// // import Single from "./Single";
-// import type { JSX } from "react/jsx-runtime";
-import { problem1 } from "../utils/mathProblems";
+import { problem2 } from "../utils/mathProblems";
 import SinglesPositions from "../utils/SinglesPositions";
-// import SinglesPositions from "../utils/SinglesPositions";
+import { translations } from "../utils/translations";
 
 const Scale = () => {
-  const sum = problem1.getSum();
-  const boxes = problem1.getXNum();
-  const count = problem1.getCountNum();
+  const sum = problem2.getSum();
+  const boxes = problem2.getXNum();
+  const count = problem2.getCountNum();
 
   return (
     <div className="scale">
       <div className="topOfScale">
         <div className="left">
           <div className="topOfBowl">
-            <div className="box-div" style={{ color: "blue" }}>
-              {SinglesPositions("x", boxes)}
-            </div>
+            <div className="box-div">{SinglesPositions("x", boxes)}</div>
             <div className="countDiv">{SinglesPositions("single", count)}</div>
           </div>
-          <div className="bowl"></div>
+          <img
+            className="bowl"
+            src="src/assets/scale-cup.svg"
+            alt={translations().sv.alt.scaleCup}
+          />
         </div>
         <div className="right">
-          <div className="topOfBowl">
-            {
-              // singlesArray.map((item) => item)
-              SinglesPositions("single", sum)
-            }
-          </div>
-          <div className="bowl"></div>
+          <div className="topOfBowl">{SinglesPositions("single", sum)}</div>
+          <img
+            className="bowl"
+            src="src/assets/scale-cup.svg"
+            alt={translations().sv.alt.scaleCup}
+          />
         </div>
       </div>
 
       <div className="scale-div">
-        <span className="board"></span>
+        <img
+          className="scaleArm"
+          src="src/assets/scale-arm.svg"
+          alt={translations("equal").sv.alt.scaleArm}
+        />
         <div className="triangle">
-          <div className="triangleL"></div>
-          <div className="triangleR"></div>
-          <div className="triangleB"></div>
+          <img
+            src="src/assets/scale-foot (3).svg"
+            alt={translations().sv.alt.scaleFoot}
+          />
         </div>
       </div>
     </div>
